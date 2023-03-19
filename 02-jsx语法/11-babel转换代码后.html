@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+
+    <style>
+      .item {
+        margin-bottom: 20px;
+        padding: 0 20px;
+        border: 1px solid #000;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+
+    <script>
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const element = /*#__PURE__*/ React.createElement(
+      "div",
+      null,
+      /*#__PURE__*/ React.createElement("div", null, "\u5934\u90E8"),
+      /*#__PURE__*/ React.createElement(
+        "ul",
+        null,
+        /*#__PURE__*/ React.createElement("li", null, "1"),
+        /*#__PURE__*/ React.createElement("li", null, "23"),
+        /*#__PURE__*/ React.createElement("li", null, "3"),
+        /*#__PURE__*/ React.createElement("li", null, "4"),
+        /*#__PURE__*/ React.createElement("li", null, "5"),
+      ),
+      /*#__PURE__*/ React.createElement("div", null, "\u5C3E\u90E8"),
+    );
+    console.log(element);
+    return element;
+  }
+}
+
+root.render(React.createElement(App, null));
+    </script>
+  </body>
+</html>

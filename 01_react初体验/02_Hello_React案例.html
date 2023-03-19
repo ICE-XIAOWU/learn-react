@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HelloReact</title>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+<script type="text/babel">
+		// 获取根元素
+    const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+    let message = "Hello World"
+
+    // 点击事件
+    function handleMessageChange() {
+        message = "Hello React"
+        rootRender()
+    }
+
+    // root渲染函数
+    rootRender()
+    function rootRender() {
+        root.render((
+            <div>
+                <h2>{message}</h2>
+                <button onClick={handleMessageChange}>点击</button>
+            </div>
+        ))
+    }
+
+</script>
+</body>
+</html>

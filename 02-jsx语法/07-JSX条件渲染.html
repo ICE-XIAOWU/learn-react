@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.js"></script>
+
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      class App extends React.Component {
+        constructor() {
+          super();
+
+          this.state = {};
+        }
+
+        render() {
+          let element = null;
+          const isShow = true;
+
+          if (isShow) element = <div>哈哈哈哈哈哈</div>;
+          else element = <div>呵呵呵呵</div>;
+          return (
+            <div>
+              {/* 方式一： 条件判断*/}
+              {element}
+              {/* 方式二： 三元运算符*/}
+              {isShow ? (
+                <h2>isShow {isShow.toString()}</h2>
+              ) : (
+                <span>isShow: {isShow.toString()}</span>
+              )}
+              {/* 方式三： 与运算符 */}
+              <div>{isShow && "哈哈哈哈哈 ，isShow是True"}</div>
+              {/* 方式四： v-show效果 */}
+              <div style={{ display: isShow ? "block" : "none" }}>
+                v-show效果
+              </div>
+            </div>
+          );
+        }
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>

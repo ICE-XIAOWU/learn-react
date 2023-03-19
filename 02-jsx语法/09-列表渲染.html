@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+
+    <style>
+      .item {
+        margin-bottom: 20px;
+        padding: 0 20px;
+        border: 1px solid #000;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.js"></script>
+
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      class App extends React.Component {
+        constructor() {
+          super();
+
+          this.state = {
+            studnets: [
+              { id: 1, name: "jack", score: 90 },
+              { id: 2, name: "kobe", score: 91 },
+              { id: 3, name: "rich", score: 92 },
+              { id: 4, name: "iuce", score: 88 },
+            ],
+          };
+        }
+
+        render() {
+          const { studnets } = this.state;
+          const scoreList = studnets.filter((item) => item.score >= 90);
+          const sliceList = scoreList.slice(0, 2);
+
+          return (
+            <div>
+              <h2>正常展示</h2>
+              {studnets.map((item) => {
+                return (
+                  <div className='item' key={item.id}>
+                    <h2>学号：{item.id}</h2>
+                    <h3>姓名：{item.name}</h3>
+                    <h1>分数：{item.score}</h1>
+                  </div>
+                );
+              })}
+              <h2>展示分数90分以上的</h2>
+              {scoreList.map((item) => {
+                return (
+                  <div className='item' key={item.id}>
+                    <h2>学号：{item.id}</h2>
+                    <h3>姓名：{item.name}</h3>
+                    <h1>分数：{item.score}</h1>
+                  </div>
+                );
+              })}
+
+              <h2>展示分数90分以上的前两个</h2>
+              {sliceList.map((item) => {
+                return (
+                  <div className='item' key={item.id}>
+                    <h2>学号：{item.id}</h2>
+                    <h3>姓名：{item.name}</h3>
+                    <h1>分数：{item.score}</h1>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        }
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>jsx语法</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.js"></script>
+
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      class App extends React.Component {
+        handleClassFieldsChangeClick = null;
+
+        constructor() {
+          super();
+
+          this.state = {
+            name: "rich",
+          };
+
+          this.handleBindChangeClick2 = this.handleBindChangeClick2.bind(this);
+        }
+
+        handleBindChangeClick() {
+          console.log("bind事件绑定", this.state.name);
+        }
+
+        handleBindChangeClick2() {
+          console.log("bind事件绑定2", this.state.name);
+        }
+
+        handleClassFieldsChangeClick = () => {
+          console.log("使用ES6 class fields语法绑定事件", this.state.name);
+        };
+
+        handleArrowFunClick() {
+          console.log("箭头函数一", this.state.name);
+        }
+
+        render() {
+          return (
+            <div>
+              {/* 1. 方式一： 使用bind绑定 */}
+              <button onClick={this.handleBindChangeClick.bind(this)}>
+                bind绑定
+              </button>
+              <button onClick={this.handleBindChangeClick2}>
+                bind绑定方法2
+              </button>
+
+              {/* 2. 方式二： 使用ES6 class fields语法 */}
+              <button onClick={this.handleClassFieldsChangeClick}>
+                ES6 class fields
+              </button>
+
+              {/* 3. 方式三： 使用箭头函数 */}
+              <button onClick={() => this.handleArrowFunClick()}>
+                箭头函数一
+              </button>
+              <button
+                onClick={() => {
+                  console.log("箭头函数二", this.state.name);
+                }}
+              >
+                箭头函数二
+              </button>
+            </div>
+          );
+        }
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>

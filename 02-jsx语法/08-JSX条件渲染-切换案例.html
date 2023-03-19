@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.js"></script>
+
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      class App extends React.Component {
+        constructor() {
+          super();
+
+          this.state = {
+            isShow: true,
+            message: "我要开始进步了！",
+          };
+        }
+
+        handleShowClick() {
+          this.setState({ isShow: !this.state.isShow });
+          console.log(this.state.isShow);
+        }
+
+        render() {
+          let element = null;
+          const { isShow, message } = this.state;
+
+          if (isShow) element = <div>{message}</div>;
+          else element = <div>别放松，要退步了！</div>;
+          return (
+            <div>
+              {element}
+              <button onClick={() => this.handleShowClick()}>切换</button>
+            </div>
+          );
+        }
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>

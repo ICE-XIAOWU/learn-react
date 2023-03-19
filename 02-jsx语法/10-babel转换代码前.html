@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+
+    <style>
+      .item {
+        margin-bottom: 20px;
+        padding: 0 20px;
+        border: 1px solid #000;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../lib/react.js"></script>
+    <script src="../lib/react-dom.js"></script>
+    <script src="../lib/babel.js"></script>
+
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      class App extends React.Component {
+        constructor() {
+          super();
+        }
+
+        render() {
+          return (
+            <div>
+              <div>头部</div>
+              <ul>
+                <li>1</li>
+                <li>23</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+              </ul>
+              <div>尾部</div>
+            </div>
+          );
+        }
+      }
+
+      root.render(<App />);
+    </script>
+  </body>
+</html>
