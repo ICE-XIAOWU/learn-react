@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx语法</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="../lib/react.js"></script>
+<script src="../lib/react-dom.js"></script>
+<script src="../lib/babel.js"></script>
+
+<script type="text/babel">
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+  class App extends React.Component {
+    constructor() {
+      super();
+
+      this.state = {
+        name: 'rich',
+        age: 22,
+        movies: ['流浪地球', '疯狂原始人', '无名', '满江红'],
+        bool: true,
+        nullName: null,
+        undefinedName: undefined,
+        object: {name: 'iuce', age: 18, getName() {return this.name}}
+      }
+
+    }
+
+    render() {
+      const {name, age, movies} = this.state
+      const {bool, nullName, undefinedName} = this.state
+      const {object} = this.state
+      const element = (
+        <div>
+          {/* Number类型 */}
+          <h2>Number类型： {name}</h2>
+          {/* String类型 */}
+          <h2>String类型： {age}</h2>
+          {/* Array类型 */}
+          <h2>Array类型： {movies}</h2>
+
+          {/* Null类型 */}
+          <h2>Null类型： {nullName}</h2>
+          <h2>Null类型： {nullName + ''}</h2>
+          {/* undefined类型 */}
+          <h2>undefined类型： {undefinedName}</h2>
+          <h2>undefined类型： {undefinedName + ''}</h2>
+          {/* Boolean类型 */}
+          <h2>Boolean类型： {bool}</h2>
+          <h2>Boolean类型： {String(bool)}</h2>
+
+          {/* Object类型 */}
+          {/* <h2>Object类型： {object}</h2> */}
+          <h2>Object 属性： {object.name}</h2>
+          <h2>Object 方法： {object.getName()}</h2>
+        </div>
+      )
+      return element
+    }
+  }
+
+  root.render(<App/>)
+
+</script>
+</body>
+</html>

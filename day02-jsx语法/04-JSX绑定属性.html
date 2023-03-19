@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx语法</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="../lib/react.js"></script>
+<script src="../lib/react-dom.js"></script>
+<script src="../lib/babel.js"></script>
+
+<script type="text/babel">
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+  class App extends React.Component {
+    constructor() {
+      super();
+
+      this.state = {
+        title: '我是绑定的title',
+        src: 'http://img.iuce.org.cn/mdimg/202302072325333.png',
+        href: 'www.baidu.com',
+        className: 'isAction',
+        styleObj: {color: 'red', fontSize: '33px'}
+      }
+    }
+
+    getFullName() {
+      return this.state.firstName + this.state.lastName
+    }
+
+    render() {
+      const {title, src, href, className, styleObj} = this.state
+      const element = (
+        <div>
+          <h2 title={title}>title绑定属性</h2>
+          <img src={src} alt="图片"/>
+          <a href={href}>点击到百度</a>
+          <h2 className={`acb ${className} cbg`}></h2>
+          <h2 style={{color: 'yellow'}}>绑定样式1</h2>
+          <h2 style={styleObj}>绑定样式2</h2>
+        </div>
+      )
+      return element
+    }
+  }
+
+  root.render(<App/>)
+
+</script>
+</body>
+</html>

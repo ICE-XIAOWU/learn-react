@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx语法</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="../lib/react.js"></script>
+<script src="../lib/react-dom.js"></script>
+<script src="../lib/babel.js"></script>
+
+<script type="text/babel">
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+  class App extends React.Component {
+
+    constructor() {
+      super();
+
+      this.state = {
+        name: 'rich'
+      }
+    }
+
+    handleArrowFunClick(e, otherData) {
+      console.log('箭头函数一', e, otherData);
+    }
+
+    handleBindChangeClick(name, age, height, e) {
+      console.log(name, age, height, e);
+    }
+
+    render() {
+      return (
+        <div>
+          <button onClick={(e) => this.handleArrowFunClick(e, [1, 2, 3])}>传递参数</button>
+          {/* 注意： 使用bind方式传递参数时，event对象是接受函数的最后一个参数 */}
+          <button onClick={this.handleBindChangeClick.bind(this, 'rich', 23, 1.99)}>使用bind方式传递参数</button>
+        </div>
+      )
+    }
+  }
+
+  root.render(<App/>)
+
+</script>
+</body>
+</html>

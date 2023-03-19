@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsx语法</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="../lib/react.js"></script>
+<script src="../lib/react-dom.js"></script>
+<script src="../lib/babel.js"></script>
+
+<script type="text/babel">
+  const root = ReactDOM.createRoot(document.querySelector("#root"))
+
+  class App extends React.Component {
+    constructor() {
+      super();
+
+      this.state = {
+        firstName: 'rich',
+        lastName: 'iuce',
+        isNumber: true
+      }
+    }
+
+    getFullName() {
+      return this.state.firstName + this.state.lastName
+    }
+
+    render() {
+      const {firstName, lastName, isNumber} = this.state
+      const counter = 20 + 30;
+      const fullName = firstName + lastName;
+      const element = (
+        <div>
+          <h2>表达式1： {20+30}</h2>
+          <h2>表达式1： {counter}</h2>
+          <h2>表达式2：{firstName + ' ' + lastName}</h2>
+          <h2>表达式2： {fullName}</h2>
+
+          <h2>三元表达式：isNumber {isNumber ? '是数字' : '不是数字'} </h2>
+
+          <h2>执行一个函数： {this.getFullName()}</h2>
+        </div>
+      )
+      return element
+    }
+  }
+
+  root.render(<App/>)
+
+</script>
+</body>
+</html>
