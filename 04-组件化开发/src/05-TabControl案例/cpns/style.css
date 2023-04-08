@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container .item {
+  flex: 1;
+}
+
+.container .item.active .text {
+  color: red;
+  padding: 3px;
+  border-bottom: 3px solid red;
+}
